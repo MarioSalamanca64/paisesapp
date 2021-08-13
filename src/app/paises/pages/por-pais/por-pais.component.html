@@ -1,0 +1,50 @@
+<div class="animate__animated animate__flipInX animate__fast">
+    <h2>Por pais</h2>
+    <hr>
+</div>
+
+<div class="row">
+    <div class="col">
+        <!-- aqui escuchas el evento enter de pais-input 
+        buscar es de por-pais.component-->
+      <app-pais-input
+      (onEnter)="buscar( $event )" 
+      (onDebounce)="sugerencias ($event)"
+      placeholder="buscar por pais...">
+    </app-pais-input>
+    </div>
+</div>
+<!-- sugerencias de palabras buscadas  efecto over css list-group-item-action-->
+<ul *ngIf="mostrarSugerencias"
+    class="list-group">
+    <li *ngFor="let pais of paisesSugeridos"
+        class="list-group-item list-group-item-action">
+        <a  class="nav-link"
+            [routerLink]="['/pais',pais.alpha2Code]">
+        {{pais.name}}
+    </a>
+    </li>
+    <li class="list-group-item list-group-item-action"
+        (click)="buscarSugerido( termino )">
+    <a  class="nav-link">
+    Buscar "{{ termino }}""
+</a>
+</li>
+
+</ul>
+
+<hr>
+<!-- aqui el error aparece o no con el ng if -->
+<div *ngIf="hayError" 
+    class="alert alert-danger">
+    No se encontro nada con el termino {{ termino }}
+</div>
+<!-- si no hay un error aparace ! -->
+<!-- si los paises es igual a 0 entonces muetsra el error si es mayor no lo muestres -->
+<div *ngIf="paises.length > 0" 
+        class="row">
+    <div class="col">
+        <!-- se tiene que mandar dde components pais-tabla -->
+       <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>

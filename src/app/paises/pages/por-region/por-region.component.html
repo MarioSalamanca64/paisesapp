@@ -1,0 +1,36 @@
+<div class="animate__animated animate__flipInX animate__fast">
+    <h3>Buscar por region <small>{{regionActiva | titlecase}}</small></h3>
+    <hr>
+    
+    <h5>Seleccione la region</h5>
+</div>
+
+
+
+<div class="row">
+    <div class="col" >
+        <!-- mostrar las clases de forma condicional 
+        otros ejemplos de como de pude colorear al momneto de darle click
+        [class.btn-primary]="region === regionActiva" despues del punto se llama otra clase 
+
+        otro si region es igual regionActiva muestre algo si es difernte muestre outline
+         [ngClass]="{
+                    'btn-primary': regionActiva === region,
+                    'btn-outline-primary': regionActiva !== region
+                }"
+            se puede porner a qui mismo (region === regionActiva)? 'btn btn-primary': 'btn btn-outline-primary'-->
+        <!-- entyre llaves lo que retorne debe de ser una exprecion de javascript -->
+        <button *ngFor="let region of regiones"
+                [class]="getClaseCSS(region)"
+                (click)="activarRegion( region )">
+            {{region | titlecase}}
+        </button>
+    </div>
+</div>
+<div *ngIf="paises.length > 0" 
+    class="row">
+<div class="col">
+    <!-- se tiene que mandar dde components pais-tabla -->
+   <app-pais-tabla [paises]="paises"></app-pais-tabla>
+</div>
+</div>

@@ -1,0 +1,29 @@
+<div class="animate__animated animate__fadeInDown animate__fast">
+    <h2>Busquedas</h2>
+    <hr>
+    <!-- para poner el borde de menu active lo colorea -->
+    <ul class="list-group">
+        <!-- [routerLinkActiveOptions]="{ exact: true }" como esta vacio es para que no este selecionado anoser que en verdad este vacio -->
+        <li
+        routerLink="" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="list-group-item">
+        Buscar pais</li>
+
+        <li
+        routerLink="region"
+        routerLinkActive="active"
+        class="list-group-item">
+        por region</li>
+
+        <!-- reuterLink se importo de routers solo se pone el nombre de /nombre -->
+        <!-- routerLinkActive="active" es para rellenar de azul cuando este seleccionado -->
+        <li
+         routerLink="capital"
+         routerLinkActive="active"
+         class="list-group-item">
+         por capital</li>
+
+    </ul>
+</div>
